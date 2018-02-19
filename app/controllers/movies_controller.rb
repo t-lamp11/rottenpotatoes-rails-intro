@@ -13,9 +13,9 @@ class MoviesController < ApplicationController
   def index
     @val = params[:val]
     if @val == 't'
-      @movies = Movie.order(title: :asc)
+      @movies = Movie.all.order(title: :asc)
     else 
-      @movies = Movie.order(release_date: :desc)
+      @movies = Movie.all.order(release_date: :asc)
     end
   end
 
