@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.ratings
     @val = params[:val]
-    rParam = params[:ratings].keys ^ @all_ratings
+    params[:rating].nil? ? rParam = @all_ratings : rParam = param[:ratings].keys
     if @val == 't'
       @movies = Movie.all.where(@rating).order(title: :asc)
     else 
