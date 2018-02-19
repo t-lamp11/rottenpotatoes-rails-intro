@@ -13,11 +13,13 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.ratings
     @val = params[:val]
+    @rating = params[:ratings] & @all_ratings
     if @val == 't'
-      @movies = Movie.all.order(title: :asc)
+      @movies = Movie.all.where(@rating).order(title: :asc)
     else 
-      @movies = Movie.all.order(release_date: :asc)
+      @movies = Movie.all.where(@rating).order(release_date: :asc)
     end
+    
   end
 
   def new
