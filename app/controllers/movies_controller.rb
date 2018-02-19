@@ -21,9 +21,9 @@ class MoviesController < ApplicationController
     end
 
     if @val == 't'
-      @movies = Movie.all.where(rating: rParam).order(title: :asc)
+      @movies = Movie.where(rating: rParam).order(title: :asc)
     else 
-      @movies = Movie.all.where(rating: rParam).order(release_date: :asc)
+      @movies = Movie.where(rating: rParam).order(release_date: :asc)
     end
     
   end
