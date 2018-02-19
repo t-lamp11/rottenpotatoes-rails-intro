@@ -15,9 +15,9 @@ class MoviesController < ApplicationController
     @val = params[:val]
     params[:rating].nil? ? rParam = @all_ratings : rParam = param[:ratings].keys
     if @val == 't'
-      @movies = Movie.all.where(@rating).order(title: :asc)
+      @movies = Movie.all.where(rating: rParam).order(title: :asc)
     else 
-      @movies = Movie.all.where(@rating).order(release_date: :asc)
+      @movies = Movie.all.where(rating: rParam).order(release_date: :asc)
     end
     
   end
