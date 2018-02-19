@@ -15,9 +15,9 @@ class MoviesController < ApplicationController
     @val = params[:val]
     
     if(params[:ratings].nil?)
-      rParam = @all_ratings
+      @rParam = @all_ratings
     else 
-      rParam = params[:ratings].keys & @all_ratings
+      @rParam = params[:ratings].keys & @all_ratings
     end
 
     if @val == 't'
