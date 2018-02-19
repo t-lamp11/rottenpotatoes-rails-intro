@@ -13,6 +13,14 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.ratings
     @val = params[:val]
+    if(session[:val] != @val)
+      if(@val != 't' && @val != 'r')
+        session[:val] = session[:val]
+        @val = session[:val]
+      else 
+        session[:val] = @val
+      end
+    end
     
     if(params[:ratings].nil?)
       @rParams = @all_ratings
