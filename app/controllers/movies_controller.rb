@@ -15,15 +15,15 @@ class MoviesController < ApplicationController
     @val = params[:val]
     
     if(params[:ratings].nil?)
-      @rParam = @all_ratings
+      @rParams = @all_ratings
     else 
-      @rParam = params[:ratings].keys & @all_ratings
+      @rParams = params[:ratings].keys & @all_ratings
     end
 
     if @val == 't'
-      @movies = Movie.where(rating: rParam).order(title: :asc)
+      @movies = Movie.where(rating: rParams).order(title: :asc)
     else 
-      @movies = Movie.where(rating: rParam).order(release_date: :asc)
+      @movies = Movie.where(rating: rParams).order(release_date: :asc)
     end
     
   end
