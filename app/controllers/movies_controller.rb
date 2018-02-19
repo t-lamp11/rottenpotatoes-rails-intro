@@ -22,7 +22,10 @@ class MoviesController < ApplicationController
       end
     end
     
-    if(params[:ratings].nil?)
+    if(session[:ratings].nil?)
+      @rParams = @all_ratings
+      session[:ratings] = @rParams
+    elsif(params[:ratings].nil?)
       @rParams = session[:ratings]
     else 
       @rParams = params[:ratings].keys & @all_ratings
