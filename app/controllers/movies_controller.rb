@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.ratings
     @val = params[:val]
+    #session sort
     if(session[:val] != @val)
       if(@val != 't' && @val != 'r')
         session[:val] = session[:val]
@@ -21,7 +22,7 @@ class MoviesController < ApplicationController
         session[:val] = @val
       end
     end
-    
+    #session ratings
     if(session[:ratings].nil?)
       @rParams = @all_ratings
       session[:ratings] = @rParams
